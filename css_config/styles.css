@@ -36,7 +36,12 @@ header img{
 /* fim do topo */
 /* inicio do conteudo */
 main{
-    margin-top: 105px;
+    margin-top: 90px;
+    margin-bottom: 80px;
+    width: 99vw;
+    height: calc(100vh - 170px);
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 main .message{
     padding: 10px 8px;
