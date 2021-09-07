@@ -1,21 +1,21 @@
 let username;
 let keepConectionKey;
 let previousMessages = [];
-enterChat();
-requestMessages();
+
 const requestMessagesKey = setInterval(requestMessages, 3000);
 let lastMessage;
 
 // Inicio da entrada e manuntenção da conexao com o chat
 function enterChat(){
-    username = prompt("Insira seu nome de usuario:");
+    username = document.querySelector(".username").value;
     const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v3/uol/participants', {name: username});
     promise.then( function (response){
         keepConectionKey = setInterval(keepConection, 1000);
+        document.querySelector(".login").classList.add("hidden")
     });
     promise.catch( function(error){
         alert("Nome Invalido ou já existente")
-        enterChat(); 
+         
     });
 }
 
