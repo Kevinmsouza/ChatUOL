@@ -5,6 +5,9 @@ let previousMessages = [];
 const requestMessagesKey = setInterval(requestMessages, 3000);
 let lastMessage;
 
+let msgto = "Todos";
+let isPrivate = false;
+
 // Inicio da entrada e manuntenção da conexao com o chat
 function enterChat(){
     username = document.querySelector(".username").value;
@@ -90,4 +93,34 @@ function sendMessage(){
         const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v3/uol/messages", message)
         promise.then(requestMessages);
     }
+}
+// Barra lateral
+function toggleAside() {
+    document.querySelector('aside').classList.toggle('hidden')
+    getParticipants()
+}
+function getParticipants () {
+    axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/uol/participants")
+    .then((response) => renderParticipants(response))
+    .catch((error) => console.log(error)) 
+}
+function renderParticipants(response) {
+    const participantBox = document.querySelectorAll(".itens-box")[1]
+    const data = response.data.map((participant) => participant.name)
+    const selectedIndex = data.indexOf(msgto);
+    participantBox.innerHTML = `<h5>Escolha um contato <br>
+    para enviar mensagem:</h5>
+    <div class="aside-item ${selectedIndex < 0 ? "selected":""}">
+        <ion-icon name="people" ></ion-icon>
+        <p>Todos</p>
+        <ion-icon class="checkmark" name="checkmark"></ion-icon>
+    </div>`
+    data.forEach((name, i) => {
+        participantBox.innerHTML += `<div class="aside-item ${i + 1 === selectedIndex ? "selected":""}">
+            <ion-icon name="person-circle"></ion-icon>
+            <p>${name}</p>
+            <ion-icon class="checkmark" name="checkmark"></ion-icon>
+        </div>`
+    });
+
 }

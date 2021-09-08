@@ -15,7 +15,7 @@
 <body>
     <header class="whiteBg">
         <img src="./images/logo 1.png" alt="Logo do Bate papo UOL">
-        <ion-icon name="people"></ion-icon>
+        <ion-icon name="people" onclick="toggleAside()" ></ion-icon>
     </header>
     <main>
         <p>Carregando mensagens...</p>
@@ -29,6 +29,33 @@
         <input type="text" placeholder="Digite seu nome" class="username" />
         <button onclick="enterChat()" >Entrar</button>
     </div>
+    <aside>
+        <div class="users hidden">
+            <div class="itens-box">
+                <h5>Escolha a visibilidade:</h5>
+                <div class="aside-item selected">
+                    <ion-icon name="lock-open" ></ion-icon>
+                    <p>Público</p>
+                    <ion-icon class="checkmark" name="checkmark"></ion-icon>
+                </div>
+                <div class="aside-item">
+                    <ion-icon name="lock-closed" ></ion-icon>
+                    <p>Reservadamente</p>
+                    <ion-icon class="checkmark" name="checkmark"></ion-icon>
+                </div>
+            </div>
+            <div class="itens-box">
+                <h5>Escolha um contato <br>
+                    para enviar mensagem:</h5>
+                <div class="aside-item selected">
+                    <ion-icon name="people" ></ion-icon>
+                    <p>Todos</p>
+                    <ion-icon class="checkmark" name="checkmark"></ion-icon>
+                </div>
+            </div>
+        </div>
+        <div class="dark hidden" onclick="toggleAside()" ></div>
+    </aside>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
