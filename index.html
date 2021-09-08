@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="./images/logo 1.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css_config/reset.css">
     <link rel="stylesheet" href="./css_config/styles.css">
 </head>
@@ -21,24 +21,27 @@
         <p>Carregando mensagens...</p>
     </main>
     <footer class="whiteBg">
-        <input placeholder="Escreva aqui..." type="text" name="inputMsg">
-        <ion-icon name="paper-plane-outline" onclick="sendMessage()"></ion-icon>
+        <div class="inputs">
+            <input placeholder="Escreva aqui..." type="text" name="inputMsg">
+            <ion-icon name="paper-plane-outline" onclick="sendMessage()"></ion-icon>
+        </div>
+        <p>Enviando para Todos</p>
     </footer>
-    <div class="login">
+    <div class="login ">
         <img src="./images/logo 1.png" alt="Logo do Bate papo UOL">
         <input type="text" placeholder="Digite seu nome" class="username" />
         <button onclick="enterChat()" >Entrar</button>
     </div>
-    <aside>
-        <div class="users hidden">
+    <aside class="hidden">
+        <div class="users">
             <div class="itens-box">
                 <h5>Escolha a visibilidade:</h5>
-                <div class="aside-item selected">
+                <div class="aside-item selected" onclick="changePrivacy(this)" >
                     <ion-icon name="lock-open" ></ion-icon>
                     <p>Público</p>
                     <ion-icon class="checkmark" name="checkmark"></ion-icon>
                 </div>
-                <div class="aside-item">
+                <div class="aside-item" onclick="changePrivacy(this)">
                     <ion-icon name="lock-closed" ></ion-icon>
                     <p>Reservadamente</p>
                     <ion-icon class="checkmark" name="checkmark"></ion-icon>
